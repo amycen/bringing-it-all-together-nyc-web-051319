@@ -39,6 +39,12 @@ class Dog
   end
 
   def update(name:)
+    id = Dogs.find_by_name(:name).id
+    sql = <<-SQL
+    UPDATE dogs SET dogs.name = ? WHERE dogs.id = ?
+    SQL
 
+    DB[:conn].execute(sql, :name, id)
+    self 
   end
 end

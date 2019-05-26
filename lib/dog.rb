@@ -27,7 +27,7 @@ class Dog
 
   def self.new_from_db(rows)
     rows.map do |row|
-      Dog.new(row[0], row[1], row[2])
+      Dog.new(id: row[0], name: row[1], breed: row[2])
     end
   end
 

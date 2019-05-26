@@ -45,6 +45,6 @@ class Dog
     SQL
 
     DB[:conn].execute(sql, :name, id)
-    self 
+    self
   end
 end

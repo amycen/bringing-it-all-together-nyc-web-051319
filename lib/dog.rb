@@ -37,4 +37,8 @@ class Dog
     data = DB[:conn].execute(sql, :name)
     self.new_from_db(data)
   end
+
+  def update(name:)
+    
+  end
 end

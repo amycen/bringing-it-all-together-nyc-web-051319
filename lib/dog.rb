@@ -39,13 +39,23 @@ class Dog
     self.new_from_db(data)
   end
 
-  def update(name:)
-    id = Dogs.find_by_name(:name).id
+  def update
     sql = <<-SQL
-    UPDATE dogs SET dogs.name = ? WHERE dogs.id = ?
+    UPDATE dogs SET dogs.name = ?, dogs.breed = ? WHERE dogs.id = ?
     SQL
 
-    DB[:conn].execute(sql, :name, id)
+    DB[:conn].execute(sql, self.name, self.breed, self.id)
 
+  end
+
+  def save
+    if !self.id
+      self.update
+    else
+      sql = <<-SQL
+      INSERT INTO dogs (name, breed) VALUES (?, ?)
+      SQL
+
+      DB[:conn].execute(sql, self.name, self.breed)
   end
 end

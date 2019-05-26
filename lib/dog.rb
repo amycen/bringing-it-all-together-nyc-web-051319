@@ -75,6 +75,7 @@ class Dog
     SQL
 
     data = DB[:conn].execute(sql, id)
+    binding.pry
     self.new_from_db(data)
   end
 end

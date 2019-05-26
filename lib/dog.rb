@@ -50,7 +50,7 @@ class Dog
 
   def save
     binding.pry
-    if !self.id
+    if self.id
       self.update
     else
       sql = <<-SQL

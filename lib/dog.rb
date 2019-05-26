@@ -1,3 +1,4 @@
+require 'pry'
 class Dog
   attr_accessor :id, :name, :breed
 
@@ -43,8 +44,9 @@ class Dog
     sql = <<-SQL
     UPDATE dogs SET dogs.name = ?, dogs.breed = ? WHERE dogs.id = ?
     SQL
-
+    binding.pry
     DB[:conn].execute(sql, self.name, self.breed, self.id)
+    
 
   end
 

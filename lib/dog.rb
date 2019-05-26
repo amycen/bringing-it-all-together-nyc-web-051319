@@ -28,4 +28,13 @@ class Dog
     rows.map do |row|
       Dog.new(id: row[0], name: row[1], breed: row[2])
   end
+
+  def self.find_by_name(name:)
+    sql = <<-SQL
+    SELECT * FROM dogs WHERE dogs.name = ?
+    SQL
+
+    data = DB[:conn].execute(sql, :name)
+    self.new_from_db(data)
+  end
 end

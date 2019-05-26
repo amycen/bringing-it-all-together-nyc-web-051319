@@ -49,7 +49,7 @@ class Dog
   end
 
   def save
-    binding.pry
+    #binding.pry
     if self.id
       self.update
     else

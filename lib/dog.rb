@@ -27,6 +27,7 @@ class Dog
   def self.new_from_db(rows)
     rows.map do |row|
       Dog.new(id: row[0], name: row[1], breed: row[2])
+    end
   end
 
   def self.find_by_name(name:)

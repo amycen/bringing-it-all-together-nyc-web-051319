@@ -35,7 +35,7 @@ class Dog
     SQL
 
     data = DB[:conn].execute(sql, name)
-    self.new_from_db(data)
+    self.new_from_db(data[0])
   end
 
   def update

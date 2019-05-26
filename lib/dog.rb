@@ -46,7 +46,7 @@ class Dog
     SQL
     binding.pry
     DB[:conn].execute(sql, self.name, self.breed, self.id)
-    
+
 
   end
 

@@ -27,7 +27,7 @@ class Dog
 
   def self.new_from_db(rows)
     rows.map do |row|
-      Dog.new(id: row[0], name: row[1], breed: row[2])
+      Dog.new(row[0], row[1], row[2])
     end
   end
 
@@ -36,7 +36,7 @@ class Dog
     SELECT * FROM dogs WHERE dogs.name = ?
     SQL
 
-    data = DB[:conn].execute(sql, :name)
+    data = DB[:conn].execute(sql, name)
     self.new_from_db(data)
   end
 
